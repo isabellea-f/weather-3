@@ -13,10 +13,16 @@ export function updateList(results) {
   datalist.innerHTML = "";
 
   results.forEach((city) => {
-    const option = document.createElement("option");
+    const li = document.createElement("li");
 
-    option.value = `${city.name}, ${city.admin1 || ""}, ${city.country || ""}`;
-    option.classList.add("bg-gray");
-    datalist.appendChild(option);
+    li.textContent = `${city.name}, ${city.admin1 || ""}, ${
+      city.country || ""
+    }`;
+
+    datalist.appendChild(li);
+
+    li.addEventListener("click", () => {
+      console.log("Hej");
+    });
   });
 }

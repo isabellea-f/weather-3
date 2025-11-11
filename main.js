@@ -1,5 +1,6 @@
 import { handleSearch, updateList } from "./input.js";
 import { Weather } from "./mainWeather.js";
+import { Searched } from "./searchHistory.js";
 import { getCity, getWeather } from "./services.js";
 
 const cityList = document.querySelector("#cities");
@@ -18,6 +19,8 @@ cityList.addEventListener("click", async (e) => {
     li.dataset.lon,
     data
   );
+
+  new Searched(li.dataset.name, data);
 
   console.log(data);
 });

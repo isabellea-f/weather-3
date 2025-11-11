@@ -1,5 +1,5 @@
 import { handleSearch } from "./input.js";
-import { getCity, getForecast } from "./services.js";
+import { getCity, getWeather } from "./services.js";
 
 handleSearch(getCity);
-getForecast();
+getWeather();

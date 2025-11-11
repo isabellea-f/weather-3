@@ -1,9 +1,9 @@
 export class Weather {
-  constructor(city, country, lat, long, data) {
+  constructor(city, country, lat, lon, data) {
     this.city = city;
     this.country = country;
     this.lat = lat;
-    this.long = long;
+    this.lon = lon;
     this.data = data;
   }
   displayWeather() {

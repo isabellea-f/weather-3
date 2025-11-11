@@ -1,3 +1,5 @@
+import { getWeather } from "./services.js";
+
 export function handleSearch(text, lista) {
   const inputField = document.querySelector("#search-input");
 
@@ -19,10 +21,14 @@ export function updateList(results) {
       city.country || ""
     }`;
 
+    let lon = city.longitude;
+    let lat = city.latitude;
+
     datalist.appendChild(li);
 
     li.addEventListener("click", () => {
       console.log("Hej");
+      getWeather(lat, lon);
     });
   });
 }

@@ -1,7 +1,8 @@
-export function handleSearch() {
+export function handleSearch(text) {
   const inputField = document.querySelector("#search-input");
   inputField.addEventListener("keyup", (e) => {
     const input = e.target.value;
-    return input;
+    console.log(input);
+    text(input);
   });
 }

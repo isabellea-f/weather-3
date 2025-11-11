@@ -1,8 +1,22 @@
-export function handleSearch(text) {
+export function handleSearch(text, lista) {
   const inputField = document.querySelector("#search-input");
-  inputField.addEventListener("keyup", (e) => {
+
+  inputField.addEventListener("keyup", async (e) => {
     const input = e.target.value;
-    console.log(input);
-    text(input);
+
+    const results = await text(input);
+    lista(results);
+  });
+}
+export function updateList(results) {
+  const datalist = document.querySelector("#cities");
+  datalist.innerHTML = "";
+
+  results.forEach((city) => {
+    const option = document.createElement("option");
+
+    option.value = `${city.name}, ${city.admin1 || ""}, ${city.country || ""}`;
+    option.classList.add("bg-gray");
+    datalist.appendChild(option);
   });
 }

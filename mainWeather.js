@@ -9,6 +9,7 @@ export class Weather {
   }
   displayWeather() {
     const weatherContainer = document.createElement("div");
+
     document.body.appendChild(weatherContainer);
 
     const currentCity = document.createElement("h3");

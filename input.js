@@ -1,5 +1,3 @@
-import { getWeather } from "./services.js";
-
 export function handleSearch(text, lista) {
   const inputField = document.querySelector("#search-input");
 
@@ -17,18 +15,12 @@ export function updateList(results) {
   results.forEach((city) => {
     const li = document.createElement("li");
 
+    li.dataset.lat = city.latitude;
+    li.dataset.lon = city.longitude;
+
     li.textContent = `${city.name}, ${city.admin1 || ""}, ${
       city.country || ""
     }`;
-
-    let lon = city.longitude;
-    let lat = city.latitude;
-
     datalist.appendChild(li);
-
-    li.addEventListener("click", () => {
-      console.log("Hej");
-      getWeather(lat, lon);
-    });
   });
 }

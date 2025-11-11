@@ -11,15 +11,13 @@ export async function getCity(city) {
   }
 }
 
-export async function getWeather() {
-  let lat = 52.52437;
-  let lon = 13.419998;
+export async function getWeather(lat, lon) {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,wind_speed_10m,rain,apparent_temperature,showers,relative_humidity_2m&wind_speed_unit=ms`;
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error("bla");
     const data = await res.json();
-    console.log(data);
+    return data;
   } catch (error) {
     console.error(error.message);
   }

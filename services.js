@@ -5,6 +5,13 @@ export async function getCity(city) {
     if (!res.ok) throw new Error("bla");
     const data = await res.json();
     console.log(data);
+
+    data.results.forEach((result) => {
+      const cityCountry = document.createElement("p");
+      cityCountry.textContent = `${result.name}, ${result.admin1}, ${result.country}`;
+      cityCountry.classList.add("bg-gray");
+      document.body.appendChild(cityCountry);
+    });
   } catch (error) {
     console.error(error.message);
   }

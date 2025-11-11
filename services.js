@@ -4,7 +4,6 @@ export async function getCity(city) {
     const res = await fetch(url);
     if (!res.ok) throw new Error("bla");
     const data = await res.json();
-    console.log(data.results);
     return data.results;
   } catch (error) {
     console.error(error.message);

@@ -5,6 +5,7 @@ export class Weather {
     this.lat = lat;
     this.lon = lon;
     this.data = data;
+    this.displayWeather();
   }
   displayWeather() {
     const weatherContainer = document.createElement("div");
@@ -17,7 +18,7 @@ export class Weather {
     currentCountry.textContent = this.country;
 
     const currentWeather = document.createElement("p");
-    currentWeather.textContent = this.data;
+    currentWeather.textContent = this.data.current.temperature_2m;
 
     weatherContainer.append(currentCity, currentCountry, currentWeather);
   }

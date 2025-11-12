@@ -12,7 +12,7 @@ export class Weather {
     const weatherContainer = document.createElement("div");
     weatherContainer.classList.add("weather");
 
-    document.body.appendChild(weatherContainer);
+    document.querySelector(".col-1").appendChild(weatherContainer);
 
     const currentCity = document.createElement("h3");
     const currentCountry = document.createElement("h3");
@@ -21,6 +21,7 @@ export class Weather {
     currentCountry.textContent = this.country;
 
     const currentWeather = document.createElement("p");
+    currentWeather.classList = "current-temp";
     currentWeather.textContent = this.data.current.temperature_2m + " C°";
 
     weatherContainer.append(currentCity, currentCountry, currentWeather);

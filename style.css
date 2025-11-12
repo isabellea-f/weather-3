@@ -1,0 +1,8 @@
+#prev-searched {
+  width: 200px;
+  height: 80vh;
+  border: 2px black solid;
+  position: absolute;
+  right: 400px;
+  top: 100px;
+}

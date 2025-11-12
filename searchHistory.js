@@ -1,24 +1,42 @@
 export class Searched {
   static prevList = [];
+  container = document.querySelector("#prev-searched");
 
   constructor(city, data) {
     this.city = city;
     this.data = data;
-    this.container = document.querySelector("#prev-searched");
-    this.render();
+    const temp = data.current.temperature_2m;
+    Searched.updateSearchList(city, temp);
+    this.renderHistory();
   }
-  render() {
-    if (!Searched.prevList.includes(this.city)) {
-      Searched.prevList.unshift(this.city);
 
-      const city = document.createElement("h3");
-      city.textContent = `${this.city}`;
+  renderHistory() {
+    this.container.innerHTML = "";
+    for (const { city, temp } of Searched.prevList) {
+      const cityCont = document.createElement("div");
 
-      const temp = document.createElement("p");
-      temp.textContent = `${this.data.current.temperature_2m} °C`;
-      console.log(this.data);
+      const cityName = document.createElement("h3");
+      cityName.textContent = `${city}`;
 
-      this.container.append(city, temp);
+      const tempEl = document.createElement("p");
+      tempEl.textContent = `${temp} °C`;
+
+      cityCont.append(cityName, tempEl);
+      this.container.append(cityCont);
     }
+  }
+  static updateSearchList(city, temp) {
+    const found = this.prevList.find((item) => item.city === city);
+    if (!found) {
+      this.prevList.unshift({ city, temp });
+      if (this.prevList.length > 5) {
+        this.prevList.pop();
+      }
+    } else {
+      const index = this.prevList.findIndex((object) => object.city === city);
+      this.prevList.splice(index, 1);
+      this.prevList.unshift({ city, temp });
+    }
+    console.log(this.prevList);
   }
 }

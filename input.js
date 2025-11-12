@@ -1,11 +1,15 @@
 export function handleSearch(text, lista) {
   const inputField = document.querySelector("#search-input");
+  let timer;
 
   inputField.addEventListener("keyup", async (e) => {
     const input = e.target.value;
-
-    const results = await text(input);
-    lista(results);
+    clearTimeout(timer);
+    timer = setTimeout(async () => {
+      const results = await text(input);
+      lista(results);
+      console.log("Data Fetched");
+    }, 500);
   });
 }
 

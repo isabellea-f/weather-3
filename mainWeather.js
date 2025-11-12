@@ -21,7 +21,7 @@ export class Weather {
     currentCountry.textContent = this.country;
 
     const currentWeather = document.createElement("p");
-    currentWeather.textContent = this.data.current.temperature_2m;
+    currentWeather.textContent = this.data.current.temperature_2m + " C°";
 
     weatherContainer.append(currentCity, currentCountry, currentWeather);
   }

@@ -29,3 +29,15 @@ cityList.addEventListener("click", async (e) => {
 
   console.log(data);
 });
+
+navigator.geolocation.getCurrentPosition(async (pos) => {
+  const lat = pos.coords.latitude;
+  const lon = pos.coords.longitude;
+
+  const data = await getWeather(lat, lon);
+  const weatherItem = document.querySelector(".weather");
+
+  console.log(lat, lon, data);
+
+  new Weather("Position", "", lat, lon, data);
+});

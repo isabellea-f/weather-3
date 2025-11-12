@@ -10,6 +10,8 @@ cityList.addEventListener("click", async (e) => {
   const li = e.target.closest("li");
   if (!li) return;
 
+  cityList.innerHTML = "";
+
   const data = await getWeather(li.dataset.lat, li.dataset.lon);
 
   const weatherItem = document.querySelector(".weather");

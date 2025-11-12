@@ -1,7 +1,9 @@
+
 import { handleSearch, updateList } from "./input.js";
 import { Weather } from "./mainWeather.js";
 import { Searched } from "./searchHistory.js";
 import { getCity, getWeather } from "./services.js";
+import { renderForecast } from "./forecast.js";
 
 const cityList = document.querySelector("#cities");
 const inputField = document.querySelector("#search-input");
@@ -35,7 +37,9 @@ cityList.addEventListener("click", async (e) => {
     li.dataset.lon,
     data
   );
-
+ 
+  await renderForecast(li.dataset.lat, li.dataset.lon);
+  
   console.log(data);
 });
 

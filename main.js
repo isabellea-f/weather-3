@@ -3,6 +3,7 @@ import { Weather } from "./mainWeather.js";
 import { getCity, getWeather } from "./services.js";
 
 const cityList = document.querySelector("#cities");
+const inputField = document.querySelector("#search-input");
 
 handleSearch(getCity, updateList);
 
@@ -11,6 +12,7 @@ cityList.addEventListener("click", async (e) => {
   if (!li) return;
 
   cityList.innerHTML = "";
+  inputField.value = "";
 
   const data = await getWeather(li.dataset.lat, li.dataset.lon);
 

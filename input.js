@@ -12,11 +12,12 @@ export function handleSearch(text, lista) {
     }, 500);
   });
 }
+
 export function updateList(results) {
   const datalist = document.querySelector("#cities");
   datalist.innerHTML = "";
 
-  results.forEach((city) => {
+  results.slice(0, 7).forEach((city) => {
     const li = document.createElement("li");
 
     li.dataset.lat = city.latitude;

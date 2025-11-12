@@ -1,4 +1,4 @@
-import { handleSearch, updateList } from "./input.js";
+import { handleSearch, updateList, clearList } from "./input.js";
 import { Weather } from "./mainWeather.js";
 import { getCity, getWeather } from "./services.js";
 
@@ -20,4 +20,12 @@ cityList.addEventListener("click", async (e) => {
   );
 
   console.log(data);
+
+  clearList()
+
 });
+
+cityList.addEventListener("keyup", e => {
+  console.log(e.key)
+  if(e.key === "Enter" || e.key === " ") e.target.click()
+})

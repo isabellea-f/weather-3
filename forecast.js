@@ -7,9 +7,12 @@ import { weatherEmojis } from "./utils/weatherCodes.js";
 export async function renderForecast(lat, lon) {
   
   const oldContainer = query('.forecast-container') 
-  if (oldContainer) oldContainer.remove();// Remove old forecast if present
+  if (oldContainer) oldContainer.remove();
 
-  const container = create('div', 'forecast-container') ;//this where 7 day forecast will be placed
+  const forecastHeading = create('h3', 'h3', 'Weather for the Next 7 Days')
+  document.body.append(forecastHeading);
+
+  const container = create('div', 'forecast-container' ) ;
   document.body.appendChild(container); // appended on body
 
   try {

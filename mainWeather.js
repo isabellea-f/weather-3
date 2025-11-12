@@ -9,6 +9,7 @@ export class Weather {
   }
   displayWeather() {
     const weatherContainer = document.createElement("div");
+    weatherContainer.classList.add("weather");
 
     document.body.appendChild(weatherContainer);
 

@@ -8,6 +8,7 @@ export function handleSearch(text, lista) {
     lista(results);
   });
 }
+
 export function updateList(results) {
   const datalist = document.querySelector("#cities");
   datalist.innerHTML = "";

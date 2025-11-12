@@ -4,7 +4,7 @@ import { query, create} from "./dom.js"
 
 export async function renderForecast(lat, lon) {
   // Map weather codes to emojis
-  const weatherEmojis = {
+/*   const weatherEmojis = {
     0: "☀️",  // Clear
     1: "🌤️", 
     2: "⛅", 
@@ -15,7 +15,7 @@ export async function renderForecast(lat, lon) {
     61: "🌧️", 
     71: "❄️", 
     95: "⛈️"
-  }; 
+  }; */
 
   // Remove old forecast if present
   const oldContainer = document.querySelector("#forecast-container");
@@ -24,8 +24,8 @@ export async function renderForecast(lat, lon) {
   // Create forecast container
 
  const container = document.createElement("div"); // this where 7 day forecast will be placed
-
-  container.id = "forecast-container";
+ 
+  /* container.id = "forecast-container";
    container.style.border = "2px solid blue";
   container.style.display = "flex";
   container.style.flexWrap = "wrap";
@@ -33,7 +33,7 @@ export async function renderForecast(lat, lon) {
   container.style.padding = "10px";
   container.style.marginTop = "10px";
   container.style.borderRadius = "10px";
-  container.style.background = "#f0f8ff";
+  container.style.background = "#f0f8ff"; */
 
   // Loading message
   const loading = document.createElement("p");
@@ -65,7 +65,7 @@ export async function renderForecast(lat, lon) {
         const emoji = weatherEmojis[today.weather_code[i + 1]] || "❓";
 
         box.innerHTML = `
-          <p>${date.toLocaleDateString("sv-SE", { weekday: "short", month: "short" ,day: "numeric"})}</p>
+          <p>${date.toLocaleDateString("sv-SE", { weekday: "short", month: "short", day: "numeric" })}</p>
           <div style="font-size:24px">${emoji}</div>
           <p>${Math.round(today.temperature_2m_min[i + 1])}–${Math.round(today.temperature_2m_max[i + 1])}°C</p>
         `;

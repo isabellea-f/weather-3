@@ -8,7 +8,7 @@ export class Searched {
     this.data = data;
     this.lat = lat;
     this.lon = lon;
-    this.temp = data.current.temperature_2m;
+    const temp = data.current.temperature_2m;
     Searched.updateSearchList(city, temp, lat, lon, country);
     this.renderHistory();
   }
@@ -47,6 +47,5 @@ export class Searched {
       this.prevList.splice(index, 1);
       this.prevList.unshift({ city, temp, lat, lon, country });
     }
-    console.log(this.prevList);
   }
 }

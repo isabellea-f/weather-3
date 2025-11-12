@@ -1,39 +1,56 @@
 
 import { handleSearch, updateList } from "./input.js";
 import { Weather } from "./mainWeather.js";
+import { Searched } from "./searchHistory.js";
 import { getCity, getWeather } from "./services.js";
 import { renderForecast } from "./forecast.js";
 
 const cityList = document.querySelector("#cities");
-
+const inputField = document.querySelector("#search-input");
 
 handleSearch(getCity, updateList);
 
-// When user clicks a city
 cityList.addEventListener("click", async (e) => {
   const li = e.target.closest("li");
   if (!li) return;
 
-  try {
-    // Fetch main weather data
-    const data = await getWeather(li.dataset.lat, li.dataset.lon);
+  cityList.innerHTML = "";
+  inputField.value = "";
 
-    // Render main weather display
-    new Weather(
-      li.dataset.name,
-      li.dataset.country,
-      li.dataset.lat,
-      li.dataset.lon,
-      data
-    );
+  const data = await getWeather(li.dataset.lat, li.dataset.lon);
 
-    // Load and display the forecast automatically
-    await renderForecast(li.dataset.lat, li.dataset.lon);
+  const weatherItem = document.querySelector(".weather");
+  if (weatherItem) weatherItem.remove();
 
-    console.log(data);
-  } catch (err) {
-    console.error("Error loading weather:", err);
-  }
+  new Weather(
+    li.dataset.name,
+    li.dataset.country,
+    li.dataset.lat,
+    li.dataset.lon,
+    data
+  );
+
+  new Searched(
+    li.dataset.name,
+    li.dataset.country,
+    li.dataset.lat,
+    li.dataset.lon,
+    data
+  );
+ 
+  await renderForecast(li.dataset.lat, li.dataset.lon);
+  
+  console.log(data);
 });
 
+navigator.geolocation.getCurrentPosition(async (pos) => {
+  const lat = pos.coords.latitude;
+  const lon = pos.coords.longitude;
 
+  const data = await getWeather(lat, lon);
+  const weatherItem = document.querySelector(".weather");
+
+  console.log(lat, lon, data);
+
+  new Weather("Position", "", lat, lon, data);
+});

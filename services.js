@@ -13,11 +13,8 @@ export async function getCity(city) {
 export async function getWeather(lat, lon) {
   //original forecast 
     //const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max,temperature_2m_min&current=weather_code&timezone=Europe%2FBerlin`;
- 
-    //old api 7 day forecast
-    //const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max,temperature_2m_min&current=temperature_2m&timezone=Europe%2FBerlin`;
-  
-  // forecast api with 17 days
+   
+  // 17 day forecast
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max,temperature_2m_min&current=temperature_2m&timezone=Europe%2FBerlin&forecast_days=14`;
   
   try {

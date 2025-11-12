@@ -6,7 +6,7 @@ import { renderForecast } from "./forecast.js";
 
 const cityList = document.querySelector("#cities");
 
-// Handle search
+
 handleSearch(getCity, updateList);
 
 // When user clicks a city

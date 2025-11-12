@@ -20,7 +20,13 @@ cityList.addEventListener("click", async (e) => {
     data
   );
 
-  new Searched(li.dataset.name, data);
+  new Searched(
+    li.dataset.name,
+    li.dataset.country,
+    li.dataset.lat,
+    li.dataset.lon,
+    data
+  );
 
   console.log(data);
 });

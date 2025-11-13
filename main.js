@@ -1,5 +1,4 @@
-
-import { handleSearch, updateList } from "./input.js";
+import { handleSearch, updateList, clearList } from "./input.js";
 import { Weather } from "./mainWeather.js";
 import { Searched } from "./searchHistory.js";
 import { getCity, getWeather } from "./services.js";
@@ -41,8 +40,15 @@ cityList.addEventListener("click", async (e) => {
   await renderForecast(li.dataset.lat, li.dataset.lon);
   
   console.log(data);
+
+  clearList()
+
 });
 
+cityList.addEventListener("keyup", e => {
+  console.log(e.key)
+  if(e.key === "Enter" || e.key === " ") e.target.click()
+})
 navigator.geolocation.getCurrentPosition(async (pos) => {
   const lat = pos.coords.latitude;
   const lon = pos.coords.longitude;

@@ -64,31 +64,6 @@ input {
   background: rgba(56, 57, 60, 0.2);
   border-radius: 16px;
   color: var(--white-color);
-.forecast-container {
-    border : 2px solid darkolivegreen;
-    display : flex;
-    flex-wrap : wrap;
-    gap : 8px;
-    padding : 10px;
-    margin-top : 10px;
-    border-radius : 10px;
-    background : aliceblue; 
-}
-
-
-.forecast-box{
-    border: 1px solid gray;
-    padding: 8px;
-    text-align: center;
-    border-radius: 8px;
-    flex: 1 1 100px;
-    background: cornflowerblue;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-li {
-  list-style-type: none;
-  padding: 0.5rem;
-  border-bottom: 1px solid gray;
 }
 
 #cities li:hover {
@@ -171,9 +146,4 @@ li {
     right: 400px;
     top: 100px;
   }
-}
-#clear-history {
-  position: absolute;
-  right: 400px;
-  top: 60px;
 }

@@ -37,3 +37,8 @@ li:hover {
   right: 400px;
   top: 100px;
 }
+#clear-history {
+  position: absolute;
+  right: 400px;
+  top: 60px;
+}

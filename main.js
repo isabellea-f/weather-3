@@ -60,3 +60,7 @@ navigator.geolocation.getCurrentPosition(async (pos) => {
 
   new Weather("Position", "", lat, lon, data);
 });
+
+document
+  .querySelector("#clear-history")
+  .addEventListener("click", () => Searched.clearList());

@@ -1,6 +1,6 @@
 export class Searched {
   static prevList = [];
-  container = document.querySelector("#prev-searched");
+  static container = document.querySelector("#prev-searched");
 
   constructor(city, country, lat, lon, data) {
     this.city = city;
@@ -14,7 +14,7 @@ export class Searched {
   }
 
   renderHistory() {
-    this.container.innerHTML = "";
+    Searched.container.innerHTML = "";
     for (const { city, temp, country } of Searched.prevList) {
       const cityCont = document.createElement("div");
 
@@ -28,9 +28,10 @@ export class Searched {
       tempEl.textContent = `${temp} °C`;
 
       cityCont.append(cityName, countryName, tempEl);
-      this.container.append(cityCont);
+      Searched.container.append(cityCont);
     }
   }
+
   static updateSearchList(city, temp, lat, lon, country) {
     const found = this.prevList.find(
       (item) => item.lat === lat && item.lon === lon
@@ -47,5 +48,9 @@ export class Searched {
       this.prevList.splice(index, 1);
       this.prevList.unshift({ city, temp, lat, lon, country });
     }
+  }
+  static clearList() {
+    Searched.prevList = [];
+    document.querySelector("#prev-searched").innerHTML = "";
   }
 }

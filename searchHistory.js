@@ -1,6 +1,6 @@
 export class Searched {
   static prevList = [];
-  static container = document.querySelector("#prev-searched");
+  static container = document.querySelector(".col-3");
 
   constructor(city, country, lat, lon, data) {
     this.city = city;

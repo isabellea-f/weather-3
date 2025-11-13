@@ -2,6 +2,7 @@ import { handleSearch, updateList, clearList } from "./input.js";
 import { Weather } from "./mainWeather.js";
 import { Searched } from "./searchHistory.js";
 import { getCity, getWeather } from "./services.js";
+import { setWeatherBackground } from "./weatherBackgrounds.js";
 import { renderForecast } from "./forecast.js";
 
 const cityList = document.querySelector("#cities");
@@ -17,6 +18,7 @@ cityList.addEventListener("click", async (e) => {
   inputField.value = "";
 
   const data = await getWeather(li.dataset.lat, li.dataset.lon);
+  setWeatherBackground(data);
 
   const weatherItem = document.querySelector(".weather");
   if (weatherItem) weatherItem.remove();
@@ -52,13 +54,16 @@ cityList.addEventListener("keyup", e => {
 navigator.geolocation.getCurrentPosition(async (pos) => {
   const lat = pos.coords.latitude;
   const lon = pos.coords.longitude;
+  console.log(pos);
 
   const data = await getWeather(lat, lon);
   const weatherItem = document.querySelector(".weather");
 
+  setWeatherBackground(data);
+
   console.log(lat, lon, data);
 
-  new Weather("Position", "", lat, lon, data);
+  new Weather("Sundsvall", "Sverige", lat, lon, data);
 });
 
 document

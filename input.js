@@ -5,6 +5,12 @@ export function handleSearch(text, lista) {
   inputField.placeholder = "Sök på ort"
   inputField.addEventListener("keyup", async (e) => {
     const input = e.target.value;
+
+    if (e.target.value.length < 2) {
+      console.log("vänta");
+      return;
+    }
+
     clearTimeout(timer);
     timer = setTimeout(async () => {
       const results = await text(input);

@@ -38,19 +38,18 @@ cityList.addEventListener("click", async (e) => {
     li.dataset.lon,
     data
   );
- 
+
   await renderForecast(li.dataset.lat, li.dataset.lon);
-  
+
   console.log(data);
 
-  clearList()
-
+  clearList();
 });
 
-cityList.addEventListener("keyup", e => {
-  console.log(e.key)
-  if(e.key === "Enter" || e.key === " ") e.target.click()
-})
+cityList.addEventListener("keyup", (e) => {
+  console.log(e.key);
+  if (e.key === "Enter" || e.key === " ") e.target.click();
+});
 navigator.geolocation.getCurrentPosition(async (pos) => {
   const lat = pos.coords.latitude;
   const lon = pos.coords.longitude;

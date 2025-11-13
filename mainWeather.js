@@ -7,8 +7,11 @@ export class Weather {
     this.data = data;
     this.displayWeather();
   }
+
   displayWeather() {
     const weatherContainer = document.createElement("div");
+    weatherContainer.classList.add("weather");
+
     document.body.appendChild(weatherContainer);
     
     weatherContainer.ariaAtomic = "true"

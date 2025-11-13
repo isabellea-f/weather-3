@@ -1,0 +1,39 @@
+.forecast-container {
+    border : 2px solid darkolivegreen;
+    display : flex;
+    flex-wrap : wrap;
+    gap : 8px;
+    padding : 10px;
+    margin-top : 10px;
+    border-radius : 10px;
+    background : aliceblue; 
+}
+
+
+.forecast-box{
+    border: 1px solid gray;
+    padding: 8px;
+    text-align: center;
+    border-radius: 8px;
+    flex: 1 1 100px;
+    background: cornflowerblue;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+li {
+  list-style-type: none;
+  padding: 0.5rem;
+  border-bottom: 1px solid gray;
+}
+
+li:hover {
+  background-color: rgb(189, 183, 183);
+}
+
+#prev-searched {
+  width: 200px;
+  height: 80vh;
+  border: 2px black solid;
+  position: absolute;
+  right: 400px;
+  top: 100px;
+}

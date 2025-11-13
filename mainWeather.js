@@ -20,11 +20,11 @@ export class Weather {
 
     const currentCity = document.createElement("h3");
     const currentCountry = document.createElement("h3");
-    const currentWeather = document.createElement("p");
 
     currentCity.textContent = this.city;
     currentCountry.textContent = this.country;
 
+    const currentWeather = document.createElement("p");
     currentWeather.classList = "current-temp";
 
     currentWeather.textContent = this.data.current.temperature_2m + " C°";

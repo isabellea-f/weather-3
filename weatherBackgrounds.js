@@ -21,7 +21,8 @@ const backgrounds = {
 };
 
 export function setWeatherBackground(weatherData) {
-  const backgroundCode = weatherData.current.weather_code;
-  document.body.style.backgroundImage =
-    "url('images/" + backgrounds[backgroundCode] + "')";
+  let backgroundCode = weatherData.daily.weather_code[0];
+  if(!backgrounds[backgroundCode]) backgroundCode = 0
+    document.body.style.backgroundImage =
+    "url('images/" + backgrounds[backgroundCode] + "')" 
 }

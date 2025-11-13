@@ -1,8 +1,9 @@
-import { handleSearch, updateList } from "./input.js";
+import { handleSearch, updateList, clearList } from "./input.js";
 import { Weather } from "./mainWeather.js";
 import { Searched } from "./searchHistory.js";
 import { getCity, getWeather } from "./services.js";
 import { setWeatherBackground } from "./weatherBackgrounds.js";
+import { renderForecast } from "./forecast.js";
 
 const cityList = document.querySelector("#cities");
 const inputField = document.querySelector("#search-input");
@@ -37,10 +38,19 @@ cityList.addEventListener("click", async (e) => {
     li.dataset.lon,
     data
   );
-
+ 
+  await renderForecast(li.dataset.lat, li.dataset.lon);
+  
   console.log(data);
+
+  clearList()
+
 });
 
+cityList.addEventListener("keyup", e => {
+  console.log(e.key)
+  if(e.key === "Enter" || e.key === " ") e.target.click()
+})
 navigator.geolocation.getCurrentPosition(async (pos) => {
   const lat = pos.coords.latitude;
   const lon = pos.coords.longitude;
@@ -55,3 +65,7 @@ navigator.geolocation.getCurrentPosition(async (pos) => {
 
   new Weather("Sundsvall", "Sverige", lat, lon, data);
 });
+
+document
+  .querySelector("#clear-history")
+  .addEventListener("click", () => Searched.clearList());

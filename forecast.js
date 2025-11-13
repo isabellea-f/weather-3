@@ -5,14 +5,14 @@ import { query, create } from "./utils/dom.js";
 import { weatherEmojis } from "./utils/weatherCodes.js";
 
 export async function renderForecast(lat, lon) {
-  const oldContainer = query(".forecast-container");
+  /*   const oldContainer = query(".forecast-container");
   if (oldContainer) oldContainer.remove();
 
   const forecastHeading = create("h3", "h3", "Weather for the Next 7 Days");
   document.body.append(forecastHeading);
 
   const container = create("div", "forecast-container");
-  document.body.appendChild(container); // appended on body
+  document.body.appendChild(container);  */ // appended on body
 
   try {
     const forecast = await getWeather(lat, lon);
@@ -41,7 +41,8 @@ export async function renderForecast(lat, lon) {
             <p> ${minTemp} - ${maxTemp} °C </p>
           `;
 
-        container.appendChild(box);
+        const X = document.querySelector(".col-2");
+        X.appendChild(box);
       });
     } else {
       container.textContent = "Forecast unavailable.";

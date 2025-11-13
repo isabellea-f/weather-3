@@ -19,7 +19,7 @@ export class Weather {
     weatherContainer.ariaAtomic = "true";
     weatherContainer.ariaLive = "polite";
 
-    const currentCity = document.createElement("h3");
+    const currentCity = document.createElement("h2");
     const currentCountry = document.createElement("h3");
 
     currentCity.textContent = this.city;

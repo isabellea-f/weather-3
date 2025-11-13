@@ -51,6 +51,6 @@ export class Searched {
   }
   static clearList() {
     Searched.prevList = [];
-    document.querySelector("#prev-searched").innerHTML = "";
+    Searched.container.innerHTML = "";
   }
 }

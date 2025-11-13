@@ -15,8 +15,13 @@ export class Searched {
 
   renderHistory() {
     Searched.container.innerHTML = "";
-    for (const { city, temp, country } of Searched.prevList) {
+    for (const { city, temp, lat, lon, country } of Searched.prevList) {
       const cityCont = document.createElement("div");
+      cityCont.classList.add("history-card");
+      cityCont.dataset.lat = lat;
+      cityCont.dataset.lon = lon;
+      cityCont.dataset.city = city;
+      cityCont.dataset.country = country;
 
       const cityName = document.createElement("h3");
       cityName.textContent = city;

@@ -68,3 +68,22 @@ navigator.geolocation.getCurrentPosition(async (pos) => {
 document
   .querySelector("#clear-history")
   .addEventListener("click", () => Searched.clearList());
+
+document.querySelector(".col-3").addEventListener("click", async (e) => {
+  const weatherItem = document.querySelector(".weather");
+  if (weatherItem) weatherItem.remove();
+
+  const card = e.target.closest(".history-card");
+  if (!card) return;
+
+  const data = await getWeather(card.dataset.lat, card.dataset.lon);
+  new Weather(
+    card.dataset.city,
+    card.dataset.country,
+    card.dataset.lat,
+    card.dataset.lon,
+    data
+  );
+  renderForecast(card.dataset.lat, card.dataset.lon);
+  setWeatherBackground(data);
+});

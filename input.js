@@ -2,7 +2,7 @@ export function handleSearch(text, lista) {
   const inputField = document.querySelector("#search-input");
   let timer;
 
-  inputField.placeholder = " Sök på ort";
+  inputField.placeholder = "Sök på ort";
   inputField.addEventListener("keyup", async (e) => {
     const input = e.target.value;
 
@@ -23,7 +23,7 @@ export function handleSearch(text, lista) {
 export function updateList(results) {
   const datalist = document.querySelector("#cities");
   datalist.innerHTML = "";
-
+  // let sorted = results. FIX THIS OK OK OK
   results.slice(0, 7).forEach((city) => {
     const li = document.createElement("li");
 

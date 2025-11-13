@@ -20,8 +20,8 @@ cityList.addEventListener("click", async (e) => {
   const data = await getWeather(li.dataset.lat, li.dataset.lon);
   setWeatherBackground(data);
 
-  const weatherItem = document.querySelector(".weather");
-  if (weatherItem) weatherItem.remove();
+  // const weatherItem = document.querySelector(".weather");
+  // if (weatherItem) weatherItem.remove();
 
   new Weather(
     li.dataset.name,
@@ -70,8 +70,19 @@ document
   .addEventListener("click", () => Searched.clearList());
 
 document.querySelector(".col-3").addEventListener("click", async (e) => {
-  const weatherItem = document.querySelector(".weather");
-  if (weatherItem) weatherItem.remove();
+  // const weatherItem = document.querySelector(".weather");
+  // if (weatherItem) weatherItem.remove();
+
+  const deleteHistoryCard = e.target.closest(".delete-history");
+
+  if (deleteHistoryCard) {
+    Searched.deleteCard(
+      deleteHistoryCard.parentElement.dataset.lat,
+      deleteHistoryCard.parentElement.dataset.lon
+    );
+    deleteHistoryCard.parentElement.remove();
+    return;
+  }
 
   const card = e.target.closest(".history-card");
   if (!card) return;

@@ -32,7 +32,11 @@ export class Searched {
       const tempEl = document.createElement("p");
       tempEl.textContent = `${temp} °C`;
 
-      cityCont.append(cityName, countryName, tempEl);
+      const closeBtn = document.createElement("button");
+      closeBtn.classList.add("delete-history");
+      closeBtn.textContent = "X";
+
+      cityCont.append(closeBtn, cityName, countryName, tempEl);
       Searched.container.append(cityCont);
     }
   }
@@ -57,5 +61,11 @@ export class Searched {
   static clearList() {
     Searched.prevList = [];
     Searched.container.innerHTML = "";
+  }
+  static deleteCard(lat, lon) {
+    const index = this.prevList.findIndex(
+      (object) => object.lat === lat && object.lon === lon
+    );
+    this.prevList.splice(index, 1);
   }
 }

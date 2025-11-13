@@ -144,3 +144,21 @@ input {
   cursor: pointer;
   background: rgba(92, 90, 90, 0.534);
 }
+.history-card {
+  position: relative;
+}
+.delete-history {
+  cursor: pointer;
+  position: absolute;
+  border: none;
+  right: -10px;
+  top: -10px;
+  width: 30px;
+  color: inherit;
+  border-radius: 8px;
+  padding: 0.3rem;
+  background-color: rgb(189, 183, 183);
+}
+.delete-history:hover {
+  background: rgba(92, 90, 90, 0.534);
+}

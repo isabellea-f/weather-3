@@ -25,11 +25,42 @@ export class Weather {
     currentCity.textContent = this.city;
     currentCountry.textContent = this.country;
 
+    /* Current temp */
     const currentWeather = document.createElement("p");
     currentWeather.classList = "current-temp";
 
-    currentWeather.textContent = this.data.current.temperature_2m + " C°";
+    currentWeather.textContent = this.data.current.temperature_2m;
 
-    weatherContainer.append(currentCity, currentCountry, currentWeather);
+    const celsiusSpan = document.createElement("span");
+    celsiusSpan.classList.add("temp-c");
+    celsiusSpan.textContent = "C°";
+
+    /* Feels like */
+    const currentFeelsLike = document.createElement("P");
+    currentFeelsLike.textContent = `Feels like: ${this.data.current.apparent_temperature}c°`;
+    currentFeelsLike.classList.add("additional-info");
+
+    /* Wind speed */
+    const currentWindSpeed = document.createElement("p");
+    currentWindSpeed.textContent = `Current wind speed: ${this.data.current.wind_speed_10m} m/s`;
+    currentWindSpeed.classList.add("additional-info");
+
+    currentWeather.appendChild(celsiusSpan);
+
+    /* Humidity */
+    const currentHumidity = document.createElement("p");
+    currentHumidity.textContent = `Current humidity: ${this.data.current.relative_humidity_2m}%`;
+    currentHumidity.classList.add("additional-info");
+
+    /* Emoji */
+
+    weatherContainer.append(
+      currentCity,
+      currentCountry,
+      currentWeather,
+      currentFeelsLike,
+      currentWindSpeed,
+      currentHumidity
+    );
   }
 }

@@ -65,9 +65,11 @@ navigator.geolocation.getCurrentPosition(async (pos) => {
   new Weather("Sundsvall", "Sverige", lat, lon, data);
 });
 
-document
-  .querySelector("#clear-history")
-  .addEventListener("click", () => Searched.clearList());
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("clear-history")) {
+    Searched.clearList();
+  }
+});
 
 document.querySelector(".col-3").addEventListener("click", async (e) => {
   // const weatherItem = document.querySelector(".weather");

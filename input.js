@@ -2,8 +2,15 @@ export function handleSearch(text, lista) {
   const inputField = document.querySelector("#search-input");
   let timer;
 
+  inputField.placeholder = " Sök på ort";
   inputField.addEventListener("keyup", async (e) => {
     const input = e.target.value;
+
+    if (e.target.value.length < 2) {
+      console.log("vänta");
+      return;
+    }
+
     clearTimeout(timer);
     timer = setTimeout(async () => {
       const results = await text(input);
@@ -12,12 +19,15 @@ export function handleSearch(text, lista) {
     }, 500);
   });
 }
+
 export function updateList(results) {
   const datalist = document.querySelector("#cities");
   datalist.innerHTML = "";
 
-  results.forEach((city) => {
+  results.slice(0, 7).forEach((city) => {
     const li = document.createElement("li");
+
+    li.tabIndex = 0;
 
     li.dataset.lat = city.latitude;
     li.dataset.lon = city.longitude;
@@ -29,4 +39,8 @@ export function updateList(results) {
     }`;
     datalist.appendChild(li);
   });
+}
+export function clearList() {
+  const datalist = document.querySelector("#cities");
+  datalist.innerHTML = "";
 }

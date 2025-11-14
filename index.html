@@ -3,12 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sundsvall Weather</title>
     <script type="module" src="main.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css"
+    />
   </head>
   <body>
-    <input id="search-input" list="cities" type="text" />
+    <div class="search-container">
+      <div class="search-box">
+        <i class="fa fa-search"></i>
+
+        <input id="search-input" list="cities" type="text" />
+      </div>
+      <ul id="cities"></ul>
+      <div id="prev-searched"></div>
+    </div>
+    <div class="container">
+      <div class="col-1"></div>
+      <div class="col-2"></div>
+      <div class="col-3"></div>
+    </div>
     <ul id="cities"></ul>
+    <div id="history-cont">
+      <button id="clear-history">Rensa historik</button>
+      <div id="prev-searched"></div>
+    </div>
   </body>
 </html>

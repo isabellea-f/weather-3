@@ -7,18 +7,27 @@ export class Weather {
     this.data = data;
     this.displayWeather();
   }
+
   displayWeather() {
+    document.querySelector(".col-1").innerHTML = "";
     const weatherContainer = document.createElement("div");
+    weatherContainer.classList.add("weather");
 
-    document.body.appendChild(weatherContainer);
+    document.querySelector(".col-1").appendChild(weatherContainer);
+    /*     document.body.appendChild(weatherContainer); */
 
-    const currentCity = document.createElement("h3");
+    weatherContainer.ariaAtomic = "true";
+    weatherContainer.ariaLive = "polite";
+
+    const currentCity = document.createElement("h2");
     const currentCountry = document.createElement("h3");
 
     currentCity.textContent = this.city;
     currentCountry.textContent = this.country;
 
     const currentWeather = document.createElement("p");
+    currentWeather.classList = "current-temp";
+
     currentWeather.textContent = this.data.current.temperature_2m + " C°";
 
     weatherContainer.append(currentCity, currentCountry, currentWeather);

@@ -52,6 +52,8 @@ export class Weather {
     currentHumidity.textContent = `Current humidity: ${this.data.current.relative_humidity_2m}%`;
     currentHumidity.classList.add("additional-info");
 
+    /* Emoji */
+
     weatherContainer.append(
       currentCity,
       currentCountry,

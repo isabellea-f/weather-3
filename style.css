@@ -11,7 +11,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  background-attachment: fixed;
 }
 
 :root {
@@ -234,4 +234,65 @@ input {
 
 .search-box input {
   padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+}
+/* Media queries */
+
+@media only screen and (max-width: 680px) {
+  input {
+    width: 10rem;
+    height: 2rem;
+    font-size: 17px;
+  }
+  .search-container {
+    padding: 0.5rem;
+  }
+  .search-box {
+    position: relative;
+    width: 100%;
+    max-width: 14rem;
+  }
+
+  .search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(116, 115, 115);
+    font-size: 18px;
+    margin-left: 10px;
+  }
+
+  .search-box input {
+    padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+  }
+  .container {
+    width: 17rem;
+    max-width: 20rem;
+    flex-wrap: wrap;
+    height: 70rem;
+  }
+  .col-1 {
+    margin-bottom: 1rem;
+  }
+  .col-2 {
+    margin-bottom: 3rem;
+  }
+  .col-3 {
+    margin-top: 2rem;
+  }
+  #cities {
+    width: 26rem;
+  }
+  .history-card {
+    margin-top: 1rem;
+  }
+  .current-temp {
+    margin-top: 5rem;
+  }
+  #cities li {
+    padding: 15px;
+    margin: 5px 9px;
+    width: 10rem;
+    font-size: 18px;
+  }
 }

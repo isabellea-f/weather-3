@@ -122,6 +122,10 @@ input {
   font-weight: 300;
 }
 
+.temp-c {
+  font-size: 4.5rem;
+}
+
 .col-1 {
   min-height: 60vh;
   display: flex;

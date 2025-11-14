@@ -28,7 +28,13 @@ export class Weather {
     const currentWeather = document.createElement("p");
     currentWeather.classList = "current-temp";
 
-    currentWeather.textContent = this.data.current.temperature_2m + " C°";
+    currentWeather.textContent = this.data.current.temperature_2m;
+
+    const celsiusSpan = document.createElement("span");
+    celsiusSpan.classList.add("temp-c");
+    celsiusSpan.textContent = "C°";
+
+    currentWeather.appendChild(celsiusSpan);
 
     weatherContainer.append(currentCity, currentCountry, currentWeather);
   }

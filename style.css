@@ -55,36 +55,41 @@ button:hover {
 .search-container {
   margin: 1rem 2rem 1rem;
   padding: 0 5rem 1rem;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-input {
+#search-input {
   height: 20px;
-  width: 30rem;
+  width: 100%;
   padding: 0.5rem 0.5rem;
-  margin: 1rem 0.5rem;
+  margin: 1rem 0;
   border-radius: 20px;
   border: 1px solid var(--black-color);
 }
 
 #cities {
+  position: absolute;
+  top: 50px;
+  z-index: 1;
   list-style: none;
-  margin: 2rem;
+  margin: 10px 0;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 #cities li {
-  margin: 0.25rem;
-  padding: 0.5rem 0.75rem;
+  margin: 2px 0;
+  padding: 1rem 0.75rem;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   background: rgba(56, 57, 60, 0.2);
   border-radius: 16px;
   color: var(--white-color);
+  width: 100%;
+  font-size: 18px;
 }
 
 #cities li:hover {
@@ -100,7 +105,7 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 4rem;
+  padding: 2rem;
   color: var(--white-color);
   background: rgba(97, 98, 104, 0.2);
   border-radius: 16px;
@@ -219,14 +224,14 @@ input {
 
 .search-box {
   position: relative;
+  display: flex;
   width: 30rem;
 }
 
 .search-box i {
   position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 15px;
+  top: 25px;
   color: rgb(116, 115, 115);
   font-size: 18px;
   margin-left: 10px;
@@ -235,53 +240,61 @@ input {
 .search-box input {
   padding: 0.5rem 0.5rem 0.5rem 2.5rem;
 }
+
 /* Media queries */
 
 @media only screen and (max-width: 680px) {
-  input {
-    width: 10rem;
+  #search-input {
+    width: 100%;
     height: 2rem;
-    font-size: 17px;
+    font-size: 18px;
+    margin: 5px 9px;
+    padding-left: 18px;
   }
   .search-container {
-    padding: 0.5rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
   .search-box {
     position: relative;
     width: 100%;
-    max-width: 14rem;
+    max-width: 100%;
   }
 
   .search-box i {
     position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 27px;
+    top: 17px;
     color: rgb(116, 115, 115);
-    font-size: 18px;
-    margin-left: 10px;
-  }
-
-  .search-box input {
-    padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+    font-size: 25px;
   }
   .container {
-    width: 17rem;
+    display: flex;
+    justify-content: center;
     max-width: 20rem;
     flex-wrap: wrap;
-    height: 70rem;
+    height: auto;
+    padding: 40px;
+    margin-top: 10px;
   }
   .col-1 {
     margin-bottom: 1rem;
   }
   .col-2 {
-    margin-bottom: 3rem;
+    margin: 0;
   }
   .col-3 {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   #cities {
-    width: 26rem;
+    position: absolute;
+    top: 4rem;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
   }
   .history-card {
     margin-top: 1rem;
@@ -291,8 +304,8 @@ input {
   }
   #cities li {
     padding: 15px;
-    margin: 5px 9px;
-    width: 10rem;
+    margin: 5px;
+    width: auto;
     font-size: 18px;
   }
 }

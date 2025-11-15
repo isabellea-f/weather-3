@@ -75,7 +75,7 @@ document.querySelector(".col-3").addEventListener("click", async (e) => {
   // const weatherItem = document.querySelector(".weather");
   // if (weatherItem) weatherItem.remove();
 
-  const deleteHistoryCard = e.target.matches(".delete-history");
+  const deleteHistoryCard = e.target.closest(".delete-history");
 
   if (deleteHistoryCard) {
     Searched.deleteCard(

@@ -2,7 +2,7 @@ export function handleSearch(text, lista) {
   const inputField = document.querySelector("#search-input");
   let timer;
 
-  inputField.placeholder = "Sök på ort"
+  inputField.placeholder = " Sök på ort";
   inputField.addEventListener("keyup", async (e) => {
     const input = e.target.value;
 
@@ -27,7 +27,7 @@ export function updateList(results) {
   results.slice(0, 7).forEach((city) => {
     const li = document.createElement("li");
 
-    li.tabIndex = 0
+    li.tabIndex = 0;
 
     li.dataset.lat = city.latitude;
     li.dataset.lon = city.longitude;
@@ -41,6 +41,6 @@ export function updateList(results) {
   });
 }
 export function clearList() {
-  const datalist = document.querySelector("#cities")
-  datalist.innerHTML = ""
+  const datalist = document.querySelector("#cities");
+  datalist.innerHTML = "";
 }

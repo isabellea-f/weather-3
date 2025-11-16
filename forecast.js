@@ -28,15 +28,21 @@ export async function renderForecast(lat, lon) {
       const minTemp = Math.round(daily.temperature_2m_min[i + 1]);
       const maxTemp = Math.round(daily.temperature_2m_max[i + 1]);
 
+      const day = date.toLocaleDateString("sv-SE", {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+      });
+
+      const formatted = day.charAt(0).toUpperCase() + day.slice(1);
+
       box.innerHTML = `
-        <p>${date.toLocaleDateString("sv-SE", {
-          weekday: "short",
-          month: "short",
-          day: "numeric",
-        })}</p>
-        <div>${emoji}</div>
-        <p>${minTemp} - ${maxTemp} °C</p>
-      `;
+  <div class="forecast-row">
+    <p>${formatted}</p>
+    <div class="emoji">${emoji}</div>
+    <p>${minTemp} - ${maxTemp} °C</p>
+  </div>
+`;
 
       column2.appendChild(box);
     });

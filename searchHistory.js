@@ -15,8 +15,11 @@ export class Searched {
 
   renderHistory() {
     Searched.container.innerHTML = "";
+    const col3 = document.querySelector(".col-3");
+
     for (const { city, temp, lat, lon, country } of Searched.prevList) {
       const cityCont = document.createElement("div");
+
       cityCont.classList.add("history-card");
       cityCont.dataset.lat = lat;
       cityCont.dataset.lon = lon;
@@ -39,6 +42,11 @@ export class Searched {
       cityCont.append(closeBtn, cityName, countryName, tempEl);
       Searched.container.append(cityCont);
     }
+
+    const clearHistoryButton = document.createElement("button");
+    clearHistoryButton.textContent = "Clear Search History";
+    clearHistoryButton.classList.add("clear-history");
+    Searched.container.appendChild(clearHistoryButton);
   }
 
   static updateSearchList(city, temp, lat, lon, country) {

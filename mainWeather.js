@@ -29,7 +29,7 @@ export class Weather {
     const currentWeather = document.createElement("p");
     currentWeather.classList = "current-temp";
 
-    currentWeather.textContent = this.data.current.temperature_2m;
+    currentWeather.textContent = Math.round(this.data.current.temperature_2m);
 
     const celsiusSpan = document.createElement("span");
     celsiusSpan.classList.add("temp-c");
@@ -51,8 +51,6 @@ export class Weather {
     const currentHumidity = document.createElement("p");
     currentHumidity.textContent = `Current humidity: ${this.data.current.relative_humidity_2m}%`;
     currentHumidity.classList.add("additional-info");
-
-    /* Emoji */
 
     weatherContainer.append(
       currentCity,

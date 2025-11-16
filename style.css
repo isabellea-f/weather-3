@@ -8,6 +8,7 @@
 body {
   /*font-family: "poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;*/
   font-family: Domine;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -243,53 +244,68 @@ button:hover {
 
 /* Media queries */
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 1050px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2rem;
+  }
   #search-input {
     width: 100%;
     height: 2rem;
     font-size: 18px;
-    margin: 5px 9px;
-    padding-left: 18px;
+    margin: 0;
+    padding-left: 20px;
   }
   .search-container {
+    display: flex;
+    justify-content: center;
     width: 100%;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 1px;
+    margin: 1px;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0rem;
     margin: 0;
-    padding: 0;
   }
   .search-box {
     position: relative;
     width: 100%;
     max-width: 100%;
+    margin: 20px 0;
   }
 
   .search-box i {
     position: absolute;
-    right: 27px;
-    top: 17px;
+    right: 15px;
+    top: 11px;
     color: rgb(116, 115, 115);
     font-size: 25px;
   }
-  .container {
-    display: flex;
-    justify-content: center;
-    max-width: 20rem;
-    flex-wrap: wrap;
-    height: auto;
-    padding: 40px;
-    margin-top: 10px;
-  }
+
   .col-1 {
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    padding: 1px;
   }
   .col-2 {
     margin: 0;
   }
   .col-3 {
-    margin-top: 1rem;
+    margin: 1rem 0;
   }
   #cities {
     position: absolute;
-    top: 4rem;
+    top: 50px;
     z-index: 1;
     width: 100%;
     display: flex;
@@ -303,8 +319,8 @@ button:hover {
     margin-top: 5rem;
   }
   #cities li {
-    padding: 15px;
-    margin: 5px;
+    padding: 25px;
+    margin: 5px 0 0 0;
     width: auto;
     font-size: 18px;
   }

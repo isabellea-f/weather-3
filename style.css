@@ -173,7 +173,7 @@ button:hover {
   background: rgba(92, 90, 90, 0.274);
   border-radius: 16px;
   transition: background 0.3s ease;
-  margin: 0 0 10px 0;
+  margin: 0 0 20px 0;
 }
 
 .forecast-row {

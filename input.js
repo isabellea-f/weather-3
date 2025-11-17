@@ -1,3 +1,5 @@
+import { sortList } from "./utils/sort.js";
+
 export function handleSearch(text, lista) {
   const inputField = document.querySelector("#search-input");
   let timer;
@@ -25,18 +27,8 @@ export function updateList(results) {
   const datalist = document.querySelector("#cities");
   datalist.innerHTML = "";
 
-  const sortBy = "SE";
-  results.sort((a, b) => {
-    if (a.country_code === sortBy && b.country_code !== sortBy) return -1;
-    if (b.country_code === sortBy && a.country_code !== sortBy) return 1;
-    if (
-      (a.country_code === sortBy && b.country_code === sortBy) ||
-      (a.country_code !== sortBy && b.country_code !== sortBy)
-    ) {
-      return b.population - a.population;
-    }
-    return 0;
-  });
+  // Sorts by Sweden and highest population first
+  sortList(results);
 
   results.slice(0, 7).forEach((city) => {
     const li = document.createElement("li");

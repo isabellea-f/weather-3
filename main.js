@@ -1,4 +1,5 @@
 import { handleSearch, updateList, clearList } from "./input.js";
+import { loadFromLocalStorage } from "./utils/localStorage.js";
 import { Weather } from "./mainWeather.js";
 import { Searched } from "./searchHistory.js";
 import { getCity, getWeather } from "./services.js";
@@ -7,6 +8,8 @@ import { renderForecast } from "./forecast.js";
 
 const cityList = document.querySelector("#cities");
 const inputField = document.querySelector("#search-input");
+
+renderOnLoad();
 
 handleSearch(getCity, updateList);
 
@@ -50,6 +53,7 @@ cityList.addEventListener("keyup", (e) => {
   console.log(e.key);
   if (e.key === "Enter" || e.key === " ") e.target.click();
 });
+
 navigator.geolocation.getCurrentPosition(async (pos) => {
   const lat = pos.coords.latitude;
   const lon = pos.coords.longitude;
@@ -62,7 +66,7 @@ navigator.geolocation.getCurrentPosition(async (pos) => {
 
   console.log(lat, lon, data);
 
-  new Weather("Sundsvall", "Sverige", lat, lon, data);
+  // new Weather("Sundsvall", "Sverige", lat, lon, data);
 });
 
 document.addEventListener("click", (e) => {
@@ -111,3 +115,17 @@ document.querySelector(".col-3").addEventListener("click", async (e) => {
   renderForecast(card.dataset.lat, card.dataset.lon);
   setWeatherBackground(data);
 });
+
+async function renderOnLoad() {
+  Searched.prevList = loadFromLocalStorage("weather-history");
+  const main = Searched.prevList[0];
+  console.log(Searched.prevList);
+
+  const data = await getWeather(main.lat, main.lon);
+
+  new Weather(main.city, main.country, main.lat, main.lon, data);
+  new Searched(main.city, main.country, main.lat, main.lon, data);
+
+  renderForecast(main.lat, main.lon);
+  setWeatherBackground(data);
+}

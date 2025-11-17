@@ -1,3 +1,8 @@
+import {
+  saveToLocalStorage,
+  loadFromLocalStorage,
+} from "./utils/localStorage.js";
+
 export class Searched {
   static prevList = [];
   static container = document.querySelector(".col-3");
@@ -10,12 +15,15 @@ export class Searched {
     this.lon = lon;
     const temp = data.current.temperature_2m;
     Searched.updateSearchList(city, temp, lat, lon, country);
+    saveToLocalStorage("weather-history", Searched.prevList);
     this.renderHistory();
   }
 
   renderHistory() {
     Searched.container.innerHTML = "";
     const col3 = document.querySelector(".col-3");
+
+    Searched.prevList = loadFromLocalStorage("weather-history");
 
     for (const { city, temp, lat, lon, country } of Searched.prevList) {
       const cityCont = document.createElement("div");
@@ -65,15 +73,18 @@ export class Searched {
       this.prevList.splice(index, 1);
       this.prevList.unshift({ city, temp, lat, lon, country });
     }
+    saveToLocalStorage("weather-history", Searched.prevList);
   }
   static clearList() {
     Searched.prevList = [];
     Searched.container.innerHTML = "";
+    saveToLocalStorage("weather-history", Searched.prevList);
   }
   static deleteCard(lat, lon) {
     const index = this.prevList.findIndex(
       (object) => object.lat === lat && object.lon === lon
     );
     this.prevList.splice(index, 1);
+    saveToLocalStorage("weather-history", Searched.prevList);
   }
 }

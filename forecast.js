@@ -28,7 +28,7 @@ export async function renderForecast(lat, lon) {
       const minTemp = Math.round(daily.temperature_2m_min[i + 1]);
       const maxTemp = Math.round(daily.temperature_2m_max[i + 1]);
 
-      const day = date.toLocaleDateString("sv-SE", {
+      const day = date.toLocaleDateString("en-US", {
         weekday: "short",
         month: "short",
         day: "numeric",

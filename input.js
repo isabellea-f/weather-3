@@ -1,8 +1,10 @@
+import { sortList } from "./utils/sort.js";
+
 export function handleSearch(text, lista) {
   const inputField = document.querySelector("#search-input");
   let timer;
 
-  inputField.placeholder = " Sök på plats";
+  inputField.placeholder = "Sök på ort";
   inputField.addEventListener("keyup", async (e) => {
     const input = e.target.value;
     alert;
@@ -36,6 +38,9 @@ export function handleSearch(text, lista) {
 export function updateList(results) {
   const datalist = document.querySelector("#cities");
   datalist.innerHTML = "";
+
+  // Sorts by Sweden and highest population first
+  sortList(results);
 
   results.slice(0, 7).forEach((city) => {
     const li = document.createElement("li");

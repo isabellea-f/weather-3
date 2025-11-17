@@ -44,8 +44,6 @@ cityList.addEventListener("click", async (e) => {
 
   await renderForecast(li.dataset.lat, li.dataset.lon);
 
-  console.log(data);
-
   clearList();
 });
 
@@ -55,17 +53,16 @@ cityList.addEventListener("keyup", (e) => {
 });
 
 navigator.geolocation.getCurrentPosition(async (pos) => {
-  const lat = pos.coords.latitude;
-  const lon = pos.coords.longitude;
-  console.log(pos);
-
-  const data = await getWeather(lat, lon);
-  const weatherItem = document.querySelector(".weather");
-
-  setWeatherBackground(data);
-
-  console.log(lat, lon, data);
-
+  if (pos) {
+    console.log(pos);
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+    const data = await getWeather(lat, lon);
+    new Weather("Din plats", "", lat, lon, data);
+    new Searched("Din plats", "", lat, lon, data);
+    await renderForecast(lat, lon);
+    setWeatherBackground(data);
+  }
   // new Weather("Sundsvall", "Sverige", lat, lon, data);
 });
 
@@ -112,7 +109,7 @@ document.querySelector(".col-3").addEventListener("click", async (e) => {
     card.dataset.lon,
     data
   );
-  renderForecast(card.dataset.lat, card.dataset.lon);
+  await renderForecast(card.dataset.lat, card.dataset.lon);
   setWeatherBackground(data);
 });
 
@@ -121,11 +118,32 @@ async function renderOnLoad() {
   const main = Searched.prevList[0];
   console.log(Searched.prevList);
 
+  // Fallback if no geolocation and no history
+  if (!main) {
+    const fallback = {
+      city: "Bajša",
+      country: "Serbia",
+      lat: "45.77989",
+      lon: "19.58515",
+    };
+    const data = await getWeather(fallback.lat, fallback.lon);
+    new Weather(
+      fallback.city,
+      fallback.country,
+      fallback.lat,
+      fallback.lon,
+      data
+    );
+    setWeatherBackground(data);
+    await renderForecast(fallback.lat, fallback.lon);
+    return;
+  }
+
   const data = await getWeather(main.lat, main.lon);
 
   new Weather(main.city, main.country, main.lat, main.lon, data);
   new Searched(main.city, main.country, main.lat, main.lon, data);
 
-  renderForecast(main.lat, main.lon);
+  await renderForecast(main.lat, main.lon);
   setWeatherBackground(data);
 }

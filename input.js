@@ -15,18 +15,6 @@ export function handleSearch(text, lista) {
     timer = setTimeout(async () => {
       const results = await text(input);
 
-      const sortBy = "SE";
-      results.sort((a, b) => {
-        if (a.country_code === sortBy && b.country_code !== sortBy) return -1;
-        if (b.country_code === sortBy && a.country_code !== sortBy) return 1;
-        if (
-          (a.country_code === sortBy && b.country_code === sortBy) ||
-          (a.country_code !== sortBy && b.country_code !== sortBy)
-        ) {
-          return a.population - b.population;
-        }
-        return 0;
-      });
       lista(results);
       console.log("Data Fetched");
     }, 500);
@@ -36,7 +24,20 @@ export function handleSearch(text, lista) {
 export function updateList(results) {
   const datalist = document.querySelector("#cities");
   datalist.innerHTML = "";
-  // let sorted = results. FIX THIS OK OK OK
+
+  const sortBy = "SE";
+  results.sort((a, b) => {
+    if (a.country_code === sortBy && b.country_code !== sortBy) return -1;
+    if (b.country_code === sortBy && a.country_code !== sortBy) return 1;
+    if (
+      (a.country_code === sortBy && b.country_code === sortBy) ||
+      (a.country_code !== sortBy && b.country_code !== sortBy)
+    ) {
+      return b.population - a.population;
+    }
+    return 0;
+  });
+
   results.slice(0, 7).forEach((city) => {
     const li = document.createElement("li");
 

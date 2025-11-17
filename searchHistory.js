@@ -10,6 +10,7 @@ export class Searched {
     this.lon = lon;
     const temp = data.current.temperature_2m;
     Searched.updateSearchList(city, temp, lat, lon, country);
+    // Searched.saveToLocalStorage();
     this.renderHistory();
   }
 
@@ -69,11 +70,21 @@ export class Searched {
   static clearList() {
     Searched.prevList = [];
     Searched.container.innerHTML = "";
+    // Searched.saveToLocalStorage();
   }
   static deleteCard(lat, lon) {
     const index = this.prevList.findIndex(
       (object) => object.lat === lat && object.lon === lon
     );
     this.prevList.splice(index, 1);
+    // Searched.saveToLocalStorage();
   }
+  // static saveToLocalStorage() {
+  //   localStorage.setItem("weather", JSON.stringify(Searched.prevList));
+  // }
+  // static loadFromLocalStorage() {
+  //   if (!geolocation) {
+  //    let  localStorage.getItem("weather", Searched.prevList);
+  //   }
+  // }
 }

@@ -124,13 +124,16 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem 0;
+  margin: 0 0 0 2rem;
+}
+.col-3 h3 {
+  font-size: 1rem;
 }
 
 .current-temp {
   font-size: 8rem;
   font-weight: 300;
-  margin-top: 8rem;
+  margin-top: 6rem;
   margin-bottom: 5rem;
 }
 
@@ -161,7 +164,7 @@ button:hover {
 
 .forecast-box,
 .history-card {
-  margin: 1rem 0;
+  margin: 1.5rem 0 2rem 0;
   padding: 1rem;
   min-width: 12rem;
 }
@@ -170,6 +173,7 @@ button:hover {
   background: rgba(92, 90, 90, 0.274);
   border-radius: 16px;
   transition: background 0.3s ease;
+  margin: 0 0 10px 0;
 }
 
 .forecast-row {

@@ -82,7 +82,18 @@ document.querySelector(".col-3").addEventListener("click", async (e) => {
       deleteHistoryCard.parentElement.dataset.lat,
       deleteHistoryCard.parentElement.dataset.lon
     );
+
+    //remove history card
     deleteHistoryCard.parentElement.remove();
+
+    const remainingCards = document.querySelectorAll(".history-card");
+
+    //if no remaining cards, remove clear history button
+    if (remainingCards.length === 0) {
+      const clearHistoryButton = document.querySelector(".clear-history");
+      if (clearHistoryButton) clearHistoryButton.remove();
+    }
+
     return;
   }
 

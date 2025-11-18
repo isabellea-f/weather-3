@@ -65,6 +65,21 @@ navigator.geolocation.getCurrentPosition(async (pos) => {
   new Weather("Sundsvall", "Sverige", lat, lon, data);
 });
 
+// ——————————————▼[Toggle search history visibility in mobile view]▼—————————————— \\
+const searchHistoryBoxOnMobile = document.querySelector(".col-3")
+const viewHistoryToggleButton = document.querySelector("#prev-button")
+
+viewHistoryToggleButton.addEventListener("click", () => {
+  searchHistoryBoxOnMobile.classList.toggle("visible")
+  if (!searchHistoryBoxOnMobile.childElementCount) {
+    const noHistory = document.createElement("button")
+    noHistory.style = `position: absolute; top: 1rem; right: 0;`
+    noHistory.textContent = "Ingen sökhistorik"
+    searchHistoryBoxOnMobile.append(noHistory)
+  }
+})
+// ——————————————▲[Toggle search history visibility in mobile view]▲—————————————— \\
+
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("clear-history")) {
     Searched.clearList();

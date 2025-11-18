@@ -13,6 +13,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  height: 100vh;
 }
 
 :root {
@@ -57,9 +58,13 @@ button:hover {
   margin: 1rem 2rem 1rem;
   padding: 0 5rem 1rem;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
+}
+
+#prev-button {
+  display: none;
 }
 
 #search-input {
@@ -101,7 +106,7 @@ button:hover {
 
 .container {
   max-width: 60rem;
-  height: 65vh;
+  min-height: 65vh;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -121,10 +126,14 @@ button:hover {
 }
 
 .current-temp {
+  min-height: 1.5em;
+  padding-top: 1rem;
   font-size: 8rem;
   font-weight: 300;
-  margin-top: 8rem;
-  margin-bottom: 5rem;
+  flex: 1;
+  align-content: center;
+  /* margin-top: 8rem;
+  margin-bottom: 5rem; */
 }
 
 .temp-c {
@@ -137,6 +146,15 @@ button:hover {
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
+}
+.col-1 h3 {
+  margin-bottom: 1rem;
+}
+
+.weather {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .additional-info {
@@ -246,6 +264,7 @@ button:hover {
 
 @media only screen and (max-width: 1050px) {
   body {
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -261,22 +280,31 @@ button:hover {
   }
   .search-container {
     display: flex;
-    justify-content: center;
+    justify-items: center;
     width: 100%;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     height: auto;
     padding: 1px;
     margin: 1px;
+    gap: 1rem;
   }
+
+  #prev-button {
+    display: initial;
+    width: 5rem;
+    margin: 0;
+    padding-block: 1rem;
+    transition: opacity .5s linear;
+  }
+
   .container {
     display: flex;
     justify-content: center;
     width: 100%;
     gap: 2rem;
     flex-wrap: wrap;
-    height: auto;
-    padding: 0rem;
-    margin: 0;
+    padding: 0;
+    margin: 0 0 2rem 0;
   }
   .search-box {
     position: relative;
@@ -301,7 +329,14 @@ button:hover {
     margin: 0;
   }
   .col-3 {
-    margin: 1rem 0;
+    /* margin: 1rem 0; */
+    position: absolute;
+    right: 0;
+    top: -1rem;
+    opacity: 0;
+  }
+  .visible {
+    opacity: 1;
   }
   #cities {
     position: absolute;

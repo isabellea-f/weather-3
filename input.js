@@ -33,6 +33,18 @@ export function handleSearch(text, lista) {
       console.log("Data Fetched");
     }, 500);
   });
+
+  document.addEventListener("click", (e) => {
+    if (e.target !== inputField) {
+      inputField.value = "";
+    }
+  });
+  inputField.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      inputField.value = "";
+      inputField.blur();
+    }
+  });
 }
 
 export function updateList(results) {

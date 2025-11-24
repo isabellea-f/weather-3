@@ -1,6 +1,7 @@
 import { sortList } from "./utils/sort.js";
+import { getCity, getWeather } from "./services.js";
 
-export function handleSearch(text, lista) {
+export function handleSearch() {
   const inputField = document.querySelector("#search-input");
   let timer;
 
@@ -22,14 +23,14 @@ export function handleSearch(text, lista) {
 
     clearTimeout(timer);
     timer = setTimeout(async () => {
-      const results = await text(input);
+      const results = await getCity(input);
 
       if (!results || results.length === 0) {
         alert("Ingen plats hittades som matchar din sökning.");
         return;
       }
 
-      lista(results);
+      updateList(results);
       console.log("Data Fetched");
     }, 500);
   });

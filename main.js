@@ -8,7 +8,7 @@ import { renderForecast } from "./forecast.js";
 const cityList = document.querySelector("#cities");
 const inputField = document.querySelector("#search-input");
 
-handleSearch(getCity, updateList);
+handleSearch();
 
 cityList.addEventListener("click", async (e) => {
   const li = e.target.closest("li");

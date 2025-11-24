@@ -37,12 +37,13 @@ export function handleSearch(text, lista) {
   document.addEventListener("click", (e) => {
     if (e.target !== inputField) {
       inputField.value = "";
+      cities.innerHTML = "";
     }
   });
   inputField.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       inputField.value = "";
-      inputField.blur();
+      cities.innerHTML = "";
     }
   });
 }

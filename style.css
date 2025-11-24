@@ -341,7 +341,8 @@ button:hover {
     padding: 0;
     margin: 0 0 2rem 0;
   }
-  .container::before, .container::after {
+  .container::before,
+  .container::after {
     translate: 0 0;
   }
   .search-box {
@@ -385,7 +386,7 @@ button:hover {
     margin: 0;
   }
   .history-card {
-    margin-top: 1rem;
+    backdrop-filter: brightness(0.5);
   }
   .current-temp {
     margin-top: 5rem;

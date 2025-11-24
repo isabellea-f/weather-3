@@ -124,7 +124,7 @@ button:hover {
   border: transparent;
 }
 .container::before {
-  translate: -4rem -4rem;
+  translate: -2rem -2rem;
   box-sizing: border-box;
   position: absolute;
   content: "";
@@ -136,7 +136,7 @@ button:hover {
   border-color: rgb(255 255 255 / 0.3);
 }
 .container::after {
-  translate: -4rem -4rem;
+  translate: -2rem -2rem;
   box-sizing: border-box;
   position: absolute;
   content: "";

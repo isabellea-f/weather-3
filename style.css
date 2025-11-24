@@ -341,6 +341,9 @@ button:hover {
     padding: 0;
     margin: 0 0 2rem 0;
   }
+  .container::before, .container::after {
+    translate: 0 0;
+  }
   .search-box {
     position: relative;
     width: 100%;

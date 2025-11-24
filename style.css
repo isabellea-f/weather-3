@@ -124,6 +124,7 @@ button:hover {
   border: transparent;
 }
 .container::before {
+  z-index: -1;
   translate: -2rem -2rem;
   box-sizing: border-box;
   position: absolute;
@@ -136,6 +137,7 @@ button:hover {
   border-color: rgb(255 255 255 / 0.3);
 }
 .container::after {
+  z-index: -1;
   translate: -2rem -2rem;
   box-sizing: border-box;
   position: absolute;

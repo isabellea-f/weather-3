@@ -48,7 +48,8 @@ cityList.addEventListener("click", async (e) => {
 
 cityList.addEventListener("keyup", (e) => {
   console.log(e.key);
-  if (e.key === "Enter" || e.key === " ") e.target.click();
+  if (e.key === "Enter" || e.key === " ") e.target.click()
+  else if (e.key === "Escape") cityList.innerHTML = ""
 });
 navigator.geolocation.getCurrentPosition(async (pos) => {
   const lat = pos.coords.latitude;

@@ -40,6 +40,7 @@ export function handleSearch(text, lista) {
       cities.innerHTML = "";
     }
   });
+
   inputField.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       inputField.value = "";
